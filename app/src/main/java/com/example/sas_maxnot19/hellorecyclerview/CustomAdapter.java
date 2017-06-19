@@ -49,15 +49,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Player player = mPlayers.get(position);
-
-        if(!player.getClub().equals("Real Madrid")) {
             viewHolder.mName.setText(player.getName());
             viewHolder.mClub.setText(player.getClub());
 
             if(player.getClub().equals("Barcelona")) {
                 viewHolder.mClub.setTextColor(Color.RED);
             }
-        }
     }
 
     @Override

@@ -4,8 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import org.w3c.dom.Text;
 
@@ -29,10 +33,16 @@ public class MyActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-//        mAdapter = new CustomAdapter(this, initPlayer());
-//        mRecyclerView.setAdapter(mAdapter);
-        mAdapter = new CustomAdapter(this, listBarca());
+        mAdapter = new CustomAdapter(this, initPlayer());
         mRecyclerView.setAdapter(mAdapter);
+//        mAdapter = new CustomAdapter(this, listBarca());
+//        mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false));
+
+        SnapHelper snapHelperStart = new GravitySnapHelper(Gravity.START);
+        snapHelperStart.attachToRecyclerView(mRecyclerView);
     }
 
     private List<Player> initPlayer() {
