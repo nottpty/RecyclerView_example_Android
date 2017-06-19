@@ -29,7 +29,9 @@ public class MyActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new CustomAdapter(this, initPlayer());
+//        mAdapter = new CustomAdapter(this, initPlayer());
+//        mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new CustomAdapter(this, listBarca());
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -43,6 +45,19 @@ public class MyActivity extends AppCompatActivity {
 
         dataset.add(messi);
         dataset.add(ronaldo);
+        dataset.add(suarez);
+
+        return dataset;
+    }
+
+    private List<Player> listBarca() {
+
+        Player messi = new Player("Leonel Missi", "Barcelona");
+        Player suarez = new Player("Luis Suarez", "Liverpool");
+
+        List<Player> dataset = new ArrayList<Player>();
+
+        dataset.add(messi);
         dataset.add(suarez);
 
         return dataset;

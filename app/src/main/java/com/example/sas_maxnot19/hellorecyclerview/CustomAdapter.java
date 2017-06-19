@@ -5,6 +5,7 @@ package com.example.sas_maxnot19.hellorecyclerview;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,12 +50,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Player player = mPlayers.get(position);
 
-        viewHolder.mName.setText(player.getName());
-        viewHolder.mClub.setText(player.getClub());
+        if(!player.getClub().equals("Real Madrid")) {
+            viewHolder.mName.setText(player.getName());
+            viewHolder.mClub.setText(player.getClub());
+
+            if(player.getClub().equals("Barcelona")) {
+                viewHolder.mClub.setTextColor(Color.RED);
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
         return mPlayers.size();
     }
+
 }
